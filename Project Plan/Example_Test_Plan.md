@@ -7,8 +7,8 @@
   1.2.3 etc...
 2. Scope of Testing  
   2.1 Testing Overview  
-  2.2 Regression Testing
-  2.3 Manual Testing / Automation Coverage
+  2.2 Regression Testing  
+  2.3 Manual Testing / Automation Coverage  
   2.4 Security Testing
 3. Table Showing Product Variants to be Tested
 4. Diagram of Product Test Network
