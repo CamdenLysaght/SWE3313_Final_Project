@@ -11,8 +11,8 @@ ROOT.title("Baker's Dozen")
 ROOT.geometry("1050x725")
 
 # Define images for components
-EMPTY_FOUNDATION = PhotoImage(file='cards\\foundation.png')
-EMPTY_TABLEAU = PhotoImage(file='cards\\tableau.png')
+EMPTY_FOUNDATION = PhotoImage(file='assets\\foundation.png')
+EMPTY_TABLEAU = PhotoImage(file='assets\\tableau.png')
 
 
 # Frame for the top tableaus
