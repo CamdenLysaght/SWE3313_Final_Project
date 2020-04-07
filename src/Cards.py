@@ -11,7 +11,7 @@ class Card:
         self.suit = suit
         self.rank = rank
         self.draggable = True
-        self.image_path = 'assets\\' + self.rank + self.suit + '.jpg'
+        self.image_path = 'assets\\' + self.rank + self.suit + '.png'
 
     def __str__(self):
         return "Card object: " + self.rank + " of " + self.suit + "s"

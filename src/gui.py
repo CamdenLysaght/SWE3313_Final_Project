@@ -14,16 +14,15 @@ ROOT.geometry("1050x725")
 EMPTY_FOUNDATION = PhotoImage(file='assets\\foundation.png')
 EMPTY_TABLEAU = PhotoImage(file='assets\\tableau.png')
 
-
 # Frame for the top tableaus
 TOP_TABLEAUS = LabelFrame(ROOT)
 TOP_TABLEAUS.config(borderwidth=0)
-TOP_TABLEAUS.grid(row=0, column=0)
+TOP_TABLEAUS.grid(row=0, column=0, padx=5*X_PADDING)
 
 # Buttons for the top tableaus
 TOP_TABLEAU1 = Label(TOP_TABLEAUS, relief=GROOVE)
 TOP_TABLEAU1.config(image=EMPTY_TABLEAU)
-TOP_TABLEAU1.grid(row=0, column=0, padx=5*X_PADDING, pady=Y_PADDING)
+TOP_TABLEAU1.grid(row=0, column=0, padx=X_PADDING, pady=Y_PADDING)
 
 TOP_TABLEAU2 = Label(TOP_TABLEAUS)
 TOP_TABLEAU2.config(image=EMPTY_TABLEAU, relief=GROOVE)
