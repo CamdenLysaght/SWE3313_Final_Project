@@ -6,10 +6,11 @@ from src.Tableaus import Tableau
 
 class Board:
 
-    def __init__(self):
+    def __init__(self, mainwindow):
         self.cards = []
         self.tableaus = []
         self.Foundations = []
+        self.mainwindow = mainwindow
 
         self.restart()
         self.shuffle_cards()
@@ -35,16 +36,15 @@ class Board:
                     temp = tableau.stack.pop(x)
                     tableau.stack.insert(0, temp)
 
-
     def restart(self):
         """ Starts a new game """
         self.cards = []
-        for x in range (0, 13):
-            self.tableaus.append(Tableau())
+        for x in range(0, 13):
+            self.tableaus.append(Tableau(self.mainwindow))
         # TODO: Initialize all 4 foundations
         for rank in RANKS:
             for suit in SUITS:
-                self.cards.append(Card(suit, rank))
+                self.cards.append(Card(self.mainwindow, suit, rank))
 
 
 if __name__ == "__main__":

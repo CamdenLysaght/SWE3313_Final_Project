@@ -1,9 +1,11 @@
+from tkinter import Label, PhotoImage, GROOVE
+
 SUITS = ["Club", "Diamond", "Heart", "Spade"]
 RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
 
 
-class Card:
-    def __init__(self, suit, rank):
+class Card(Label):
+    def __init__(self, mainwindow, suit, rank, **kw):
         """ Constructor for cards. Each card may have:
             -- Suit: Spade, Heart, Club, or Diamond
             -- Rank: 2 - 10, Jack, Queen, King, or Ace
@@ -11,7 +13,8 @@ class Card:
         self.suit = suit
         self.rank = rank
         self.draggable = True
-        self.image_path = 'assets\\' + self.rank + self.suit + '.png'
+        self.image = PhotoImage(file='assets\\' + self.rank + self.suit + '.png')
+        super().__init__(master=mainwindow, image=self.image, relief=GROOVE, **kw)
 
     def __str__(self):
         return "Card object: " + self.rank + " of " + self.suit + "s"
