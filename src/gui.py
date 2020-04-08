@@ -1,50 +1,49 @@
-from tkinter import Tk, Label, LabelFrame, PhotoImage, GROOVE
+from tkinter import Tk, Label, PhotoImage, GROOVE
+from src.Board import Board
 
-# Define constants for padding
-X_PADDING = 5
-Y_PADDING = 5
+# Define constants for placement
+FOUNDATIONS_X_CORNER = 934
+FOUNDATION_Y_CORNERS = [17, 193, 369, 545]
+TOP_TABLEAU_Y_CORNER = 72
+TOP_TABLEAU_X_CORNERS = [48, 166, 284, 402, 520, 638, 756]
+BOTTOM_TABLEAU_X_CORNERS = [120, 238, 356, 474, 592, 710]
+BOTTOM_TABLEAU_Y_CORNER = 489
 
 # Set up frame and window
 ROOT = Tk()
-ROOT.config(pady=Y_PADDING)
+ROOT.config(pady=5)
 ROOT.title("Baker's Dozen")
 ROOT.geometry("1050x725")
+
+# Create game board
+mainboard = Board()
+
+# Create arrays for placeholder objects
+foundations = []
+top_tableaus = []
+bottom_tableaus = []
 
 # Define images for components
 EMPTY_FOUNDATION = PhotoImage(file='assets\\foundation.png')
 EMPTY_TABLEAU = PhotoImage(file='assets\\tableau.png')
 
-# Frame for the top tableaus
-TOP_FRAME = LabelFrame(ROOT)
-TOP_FRAME.config(borderwidth=0)
-TOP_FRAME.grid(row=0, column=0, padx=5*X_PADDING)
 
-# Frame for the foundations
-RIGHT_FRAME = LabelFrame(ROOT)
-RIGHT_FRAME.config(pady=Y_PADDING, borderwidth=0)
-RIGHT_FRAME.grid(row=0, column=1, rowspan=3, padx=50)
+def place_placeholders():
+    # Labels for the foundations
+    for x in range(0, 4):
+        foundations.append(Label(ROOT, image=EMPTY_FOUNDATION, relief=GROOVE))
+        foundations[x].place(x=FOUNDATIONS_X_CORNER, y=FOUNDATION_Y_CORNERS[x])
 
-# Frame for the bottom tableaus
-BOTTOM_FRAME = LabelFrame(ROOT)
-BOTTOM_FRAME.config(borderwidth=0)
-BOTTOM_FRAME.grid(row=2, column=0)
+    # Labels for the top tableaus
+    for x in range(0, 7):
+        top_tableaus.append(Label(ROOT, image=EMPTY_TABLEAU, relief=GROOVE))
+        top_tableaus[x].place(x=TOP_TABLEAU_X_CORNERS[x], y=TOP_TABLEAU_Y_CORNER)
 
-# Labels for the top tableaus
-top_tableaus = []
-for x in range(0, 7):
-    top_tableaus.append(Label(TOP_FRAME, image=EMPTY_TABLEAU, relief=GROOVE))
-    top_tableaus[x].grid(row=0, column=x, padx=X_PADDING, pady=Y_PADDING)
+    # Labels for the bottom tableaus
+    for x in range(0, 6):
+        bottom_tableaus.append(Label(ROOT, image=EMPTY_TABLEAU, relief=GROOVE))
+        bottom_tableaus[x].place(x=BOTTOM_TABLEAU_X_CORNERS[x], y=BOTTOM_TABLEAU_Y_CORNER)
 
-# Labels for the foundations
-foundations = []
-for x in range(0, 4):
-    foundations.append(Label(RIGHT_FRAME, image=EMPTY_FOUNDATION, relief=GROOVE))
-    foundations[x].grid(row=x, column=0, padx=X_PADDING, pady=Y_PADDING)
 
-# Labels for the bottom tableaus
-bottom_tableaus = []
-for x in range(0, 6):
-    bottom_tableaus.append(Label(BOTTOM_FRAME, image=EMPTY_TABLEAU, relief=GROOVE))
-    bottom_tableaus[x].grid(row=0, column=x, padx=X_PADDING, pady=Y_PADDING)
-
+place_placeholders()
 ROOT.mainloop()
